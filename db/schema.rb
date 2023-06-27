@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_092921) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_27_125111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "title"
+    t.integer "status", default: 0
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "client_email"
+    t.bigint "therapist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["therapist_id"], name: "index_sessions_on_therapist_id"
+  end
 
   create_table "therapists", force: :cascade do |t|
     t.string "name"
@@ -21,4 +33,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_092921) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "sessions", "therapists"
 end

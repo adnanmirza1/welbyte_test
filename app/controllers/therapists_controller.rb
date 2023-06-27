@@ -9,7 +9,9 @@ class TherapistsController < ApplicationController
     @therapist = Therapist.new
   end
 
-  def show; end
+  def show
+    @sessions = @therapist.sessions
+  end
 
   def edit; end
 

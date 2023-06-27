@@ -33,11 +33,39 @@
             <h2 class='accordion-header' id='headingTherapistCustomer'>
               <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTherapistCustomer" aria-expanded="false" aria-controls="collapseTherapistCustomer">
                 <h2>Sessions</h2>
+                <%= link_to new_session_path(therapist: @therapist.id), { title: "Create Session" } do %>
+                  <i class="bi bi-plus-circle btn btn-primary mx-3"></i>
+                <% end %>
               </button>
             </h2>
             <div id="collapseTherapistCustomer" class="show accordion-collapse collapse" aria-labelledby="headingTherapistCustomer">
               <div class='accordion-body'>
-               <!-- Session Detail here -->
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th class='sm_wid'>Title</th>
+                      <th class='md_wid'>Start</th>
+                      <th class='sm_wid'>End</th>
+                      <th class='x_sm_wid'>Status</th>
+                      <th class='sm_wid text-center'>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% @sessions.each do |session| %>
+                      <tr>
+                        <td><%= session.title %></td>
+                        <td><%= session.start_time %></td>
+                        <td><%= session.end_time %></td>
+                        <td><%= session.status %></td>
+                        <td class='text-end'>
+                          <%= link_to 'Get Appointment', therapist_path(@therapist), data: { confirm: "Are you sure you want to make an appointment with this therapist at selected session?" }, class: 'btn btn-success' %>
+                        </td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

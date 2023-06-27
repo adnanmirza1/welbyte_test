@@ -1,0 +1,45 @@
+<div class="m-5">
+  <%= form_with(model: @session, local: true, data: { turbo: false }) do |form| %>
+    <% if @session.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>
+        <ul>
+          <% @session.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div id='form_errors'></div>
+
+    <h4 class="text-center"><%= edit? ? "Edit" : "Create" %> Session</h4>
+
+    <div class="mb-3">
+      <%= form.label :title, class: 'h5' %>
+      <%= form.text_field :title, class: 'form-control', required: true %>
+    </div>
+
+    <div class='row'>
+      <div class="mb-3 col-6">
+        <%= form.label :start_time, class: 'h5' %>
+        <%= form.datetime_field :start_time, class: 'form-control', required: true %>
+      </div>
+      
+      <div class="mb-3 col-6">
+        <%= form.label :end_time, class: 'h5' %>
+        <%= form.datetime_field :end_time, class: 'form-control', required: true %>
+      </div>
+    </div>
+
+    <%= form.hidden_field :therapist_id, value: params[:therapist] %>
+
+    <div class="justify-content-start">
+      <%= button_tag(class: "btn btn-primary rounded-pill") do %>
+        <i class="bi bi-save"></i>
+        Save
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
