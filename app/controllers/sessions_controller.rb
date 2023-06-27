@@ -5,6 +5,11 @@ class SessionsController < ApplicationController
     @sessions = Session.available.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
+  def my_sessions
+    @my_sessions = Session.booked.order(created_at: :desc).where(client_email: params[:client_email])
+                          .paginate(page: params[:page], per_page: 10)
+  end
+
   def new
     @session = Session.new
   end
@@ -47,7 +52,7 @@ class SessionsController < ApplicationController
     @session.update(client_email: params[:client_email])
     @session.booked!
 
-    redirect_to sessions_path, notice: 'Appointment created successfully'
+    redirect_to my_sessions_sessions_path, notice: 'Appointment created successfully'
   end
 
   private

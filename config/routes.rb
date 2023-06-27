@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     member do
       patch :make_appointment
     end
+    collection do
+      get :my_sessions
+    end
   end
 end
