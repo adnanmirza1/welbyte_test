@@ -3,4 +3,6 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "#{exception} - { Model: #{exception.model} }"
     redirect_to root_path
   end
+
+  def homepage; end
 end
