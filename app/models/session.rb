@@ -5,4 +5,10 @@ class Session < ApplicationRecord
 
   validates :client_email, presence: true, if: :booked?
   validates :start_time, :end_time, presence: true
+
+  after_create_commit :check_status_for_past_sessions
+
+  def check_status_for_past_sessions
+    self.completed! if end_time < Time.now
+  end
 end
