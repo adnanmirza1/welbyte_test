@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse"  id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link <%= active?('application') %>" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/therapists">Therapist</a>
+          <a class="nav-link <%= active?('therapists') %>" href="/therapists">Therapist</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">My Sessions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Available Sessions</a>
+          <a class="nav-link <%= active?('sessions', 'index') %>" href="/sessions">Available Sessions</a>
         </li>
       </ul>
     </div>

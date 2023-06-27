@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class='row'>
-    <div class="col-3 mt-5">
+    <div class="col-12 mt-5 col-md-3">
       <div class="card">
         <div class="card-body border border-2 border-dark m-3">
           <%= link_to edit_therapist_path(@therapist), { title: "Edit Therapist", class: 'bg-transparent' } do %>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class='col-9 mt-5'>
+    <div class='col-12 mt-5 col-md-9'>
       <div class='card-body'>
         <div class='accordion' id ='accordionTypeTherapistCustomer'>
           <div class='accordion-item'>
@@ -55,11 +55,14 @@
                     <% @sessions.each do |session| %>
                       <tr>
                         <td><%= session.title %></td>
-                        <td><%= session.start_time %></td>
-                        <td><%= session.end_time %></td>
+                        <td><%= session.start_time.strftime("%B %d, %Y %H:%M:%S") %></td>
+                        <td><%= session.end_time.strftime("%B %d, %Y %H:%M:%S") %></td>
                         <td><%= session.status %></td>
-                        <td class='text-end'>
-                          <%= link_to 'Get Appointment', therapist_path(@therapist), data: { confirm: "Are you sure you want to make an appointment with this therapist at selected session?" }, class: 'btn btn-success' %>
+                        <td>
+                          <% if session.available? %>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appointmentModal">Get Appointment</button>
+                            <%= render "sessions/appointment", session: session %>
+                          <% end %>
                         </td>
                       </tr>
                     <% end %>
