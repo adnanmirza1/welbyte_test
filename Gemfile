@@ -64,3 +64,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "byebug", :groups => [:development, :test]
+gem 'will_paginate'
+gem 'will_paginate-bootstrap-style'

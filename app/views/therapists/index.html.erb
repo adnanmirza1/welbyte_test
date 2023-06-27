@@ -1,0 +1,45 @@
+<div class="container-fluid mt-3">
+  <div class="row justify-content-between">
+    <div class="col-auto">
+      <h1>Therapists</h1>
+    </div>
+    <div class="col-auto">
+      <%= link_to '+ Add Yourself as a Therapist', new_therapist_path, { class: 'btn rounded-pill btn-primary' } %>
+    </div>
+  </div>
+
+  <div class="table-responsive min-vh-100 mt-4">
+    <table class="table">
+      <thead>
+         <tr>
+          <th class="w-50">Name</th>
+          <th class="w-75">Email</th>
+          <th class="w-25">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @therapists.each do |therapist| %>
+          <tr>
+            <td><%= therapist.name %></td>
+            <td><%= therapist.email %></td>
+            <td>
+              <%= link_to therapist_path(therapist), { title: "View Therapist", class: 'bg-transparent' } do %>
+                <i class="bi bi-arrow-up-right-square btn btn-info mb-1"></i>
+              <% end %>
+
+              <%= link_to edit_therapist_path(therapist), { title: "Edit Therapist", class: 'bg-transparent' } do %>
+                <i class="bi bi-pencil-square btn btn-dark mb-1"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <%= will_paginate @therapists, renderer: WillPaginate::ActionView::BootstrapLinkRenderer  %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="m-5">
+  <%= form_with(model: @therapist, local: true, data: { turbo: false }) do |form| %>
+    <% if @therapist.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@therapist.errors.count, "error") %> prohibited this therapist from being saved:</h2>
+        <ul>
+          <% @therapist.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div id='form_errors'></div>
+
+    <h4 class="text-center"><%= edit? ? "Edit" : "Create" %> Therapist</h4>
+
+    <div class="field  mb-3">
+      <%= form.label :name, class: 'h5' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field  mb-3">
+      <%= form.label :email, class: 'h5' %>
+      <%= form.email_field :email, class: 'form-control', required: true %>
+    </div>
+
+    <div class="justify-content-start">
+      <%= button_tag(class: "btn btn-primary rounded-pill") do %>
+        <i class="bi bi-save"></i>
+        Save
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
