@@ -21,10 +21,10 @@ The ouput should start with something like `ruby 3.1.2` If not, install the righ
 rails -v
 ```
 
-The ouput should start with something like `Rails 7` If not, install the right ruby version
+The ouput should start with something like `Rails 7` If not, install the right rails version
 
 # System dependencies
-All the system dependencies are includes in gemfile. Just run this command to build the dependencies:
+All the system dependencies are included in gemfile. Just run this command to build the dependencies:
 
 ``` bundle install ```
 and then run these commands
@@ -41,7 +41,7 @@ bundle exec rails assets:precompile
 # Database initialization
 
 ```shell
-rails db:create db:migrate db:seed
+rails db:create db:migrate
 ```
 
 # How to run
