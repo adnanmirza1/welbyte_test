@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: %i[show edit update destroy make_appointment]
-  before_action :set_time_zone, only: %i[create]
 
   def index
     @sessions = Session.available.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
@@ -64,10 +63,5 @@ class SessionsController < ApplicationController
 
   def session_params
     params.require(:session).permit(:title, :start_time, :end_time, :client_email, :therapist_id)
-  end
-
-  def set_time_zone
-    params[:session][:start_time] = params[:session][:start_time].to_time
-    params[:session][:end_time] = params[:session][:end_time].to_time
   end
 end

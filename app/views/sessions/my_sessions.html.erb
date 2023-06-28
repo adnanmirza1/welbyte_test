@@ -17,6 +17,7 @@
           <th>Start</th>
           <th>End</th>
           <th>Status</th>
+          <th>Client Email</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -28,6 +29,7 @@
             <td><%= session.start_time.strftime("%B %d, %Y %H:%M:%S %Z") %></td>
             <td><%= session.end_time.strftime("%B %d, %Y %H:%M:%S %Z") %></td>
             <td><%= session.status %></td>
+            <td><%= session.client_email %></td>
             <td>
               <% if session.available? %>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#appointmentModal">Get Appointment</button>
