@@ -33,6 +33,7 @@
     </div>
 
     <%= form.hidden_field :therapist_id, value: params[:therapist] %>
+    <%= form.hidden_field :timezone, id: 'timezone-field' %>
 
     <div class="justify-content-start">
       <%= button_tag(class: "btn btn-primary rounded-pill") do %>
@@ -43,3 +44,6 @@
   <% end %>
 </div>
 
+<script>
+  document.getElementById('timezone-field').value = new Date().getTimezoneOffset()
+</script>
