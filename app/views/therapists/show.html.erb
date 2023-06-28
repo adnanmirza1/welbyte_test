@@ -55,8 +55,8 @@
                     <% @sessions.each do |session| %>
                       <tr>
                         <td><%= session.title %></td>
-                        <td><%= session.start_time.strftime("%B %d, %Y %H:%M:%S") %></td>
-                        <td><%= session.end_time.strftime("%B %d, %Y %H:%M:%S") %></td>
+                        <td><%= session.start_time.strftime("%B %d, %Y %H:%M:%S %Z") %></td>
+                        <td><%= session.end_time.strftime("%B %d, %Y %H:%M:%S %Z") %></td>
                         <td><%= session.status %></td>
                         <td>
                           <% if session.available? %>
